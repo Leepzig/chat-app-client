@@ -23,9 +23,7 @@ const Login = ({loginUser}) => {
         }
         fetch(`http://localhost:3001/users/${user.id}`, options)
         .then(response => response.json())
-        .then(data => {
-            debugger
-        })
+        .then(data => {console.log(data)})
     }
 
     const handleSubmit = (e, user) => {
@@ -36,6 +34,8 @@ const Login = ({loginUser}) => {
 
   return (
       <>
+        <h1>Chat World</h1>
+        <h3>Login with your account:</h3>
         <form onSubmit={handleSubmit}>
             {users.map(user => <button key={user.id} onClick={(e) => handleSubmit(e, user)}>{user.username}</button>)}
         </form>
