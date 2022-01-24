@@ -34,7 +34,6 @@ const Login = ({loginUser}) => {
 
   return (
       <>
-        <h1>Chat World</h1>
         <h3>Login with your account:</h3>
         <form onSubmit={handleSubmit}>
             {users.map(user => <button key={user.id} onClick={(e) => handleSubmit(e, user)}>{user.username}</button>)}

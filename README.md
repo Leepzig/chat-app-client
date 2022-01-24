@@ -1,6 +1,10 @@
 
-# Built Using:
+# Summary
 
+
+# Built Using:
+- react
+- socket.io-client
 
 # Setup
 Clone the repository along with the chat-app-server.
