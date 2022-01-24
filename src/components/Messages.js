@@ -8,6 +8,10 @@ const Messages = ({ socket, currentUser }) => {
         setMessages([...messages, msg])
     }
 
+    socket.on('sent message', (message) => {
+        addMessage(message)
+      })
+
     useEffect(() => {
         const loadMessages =  () => {
             fetch('http://localhost:3001/messages')

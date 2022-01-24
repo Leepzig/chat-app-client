@@ -37,10 +37,6 @@ const ChatInput = ({ socket, addMessage, currentUser }) => {
     .then(response => response.json())
     .then(data => addMessage(data))
   }
-
-  socket.on('sent message', (message) => {
-      addMessage(message)
-    })
    
   return (
   <div>
