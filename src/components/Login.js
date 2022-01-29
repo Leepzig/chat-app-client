@@ -24,7 +24,7 @@ const Login = ({loginUser, socket}) => {
       <>
         <h3>Login with your account:</h3>
         <form onSubmit={handleSubmit}>
-            {users.map(user => <button key={user.id} onClick={(e) => handleSubmit(e, user)}>{user.username}</button>)}
+            {users.map(user => <button disabled={user.online} key={user.id} onClick={(e) => handleSubmit(e, user)}>{user.username}</button>)}
         </form>
 
 
