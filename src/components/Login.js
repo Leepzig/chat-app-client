@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Login = ({loginUser}) => {
+const Login = ({loginUser, socket}) => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -12,24 +12,12 @@ const Login = ({loginUser}) => {
         loadUsers()
     },[])
 
-    const changeUserStatus = (user) => {
-        const options = {
-            method:"PATCH",
-            headers:{
-                "Accept":"application/json",
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(user)
-        }
-        fetch(`http://localhost:3001/users/${user.id}`, options)
-        .then(response => response.json())
-        .then(data => {console.log(data)})
-    }
+
 
     const handleSubmit = (e, user) => {
         e.preventDefault()
         loginUser(user)
-        changeUserStatus(user)
+        // connectUserToSocket(user)
     }
 
   return (
