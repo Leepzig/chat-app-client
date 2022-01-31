@@ -18,6 +18,12 @@ const Home = () => {
     initiateSocket()
   }
 
+  const logOff = () => {
+    socket.emit('log off')
+    socket.disconnect()
+    setCurrentUser(null)
+}
+
   const initiateSocket = () => {
     const newSocket = io(EP)
     setSocket(newSocket)
@@ -50,6 +56,7 @@ const Home = () => {
     <h2>Hello {currentUser.username},</h2>
     <h2>Welcome back!</h2>
     <Messages socket={socket} currentUser={currentUser}/>
+    <button onClick={logOff}>Log Off</button>
     </>
   );
 
