@@ -33,8 +33,9 @@ const Home = () => {
     fetch(`http://localhost:3001/users/${user.id}`, options)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
-      setCurrentUser(data)
+      // debugger
+      console.log(data[0])
+      setCurrentUser(data[0])
     })
     //socket doesn't exist when this is called
 }

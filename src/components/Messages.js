@@ -9,6 +9,7 @@ const Messages = ({ socket, currentUser }) => {
     }
 
     socket.on('sent message', (message) => {
+        // debugger
         addMessage(message)
       })
 
