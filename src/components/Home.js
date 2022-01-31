@@ -35,9 +35,7 @@ const Home = () => {
     fetch(`http://localhost:3001/users/${user.id}`, options)
     .then(response => response.json())
     .then(data => {
-      //Why is an array being returned? Check to see what the backend is sending.
-      //check the patch request
-      setCurrentUser(data[0])
+      setCurrentUser(data)
     })
 }
 
