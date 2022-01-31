@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const Login = ({loginUser, socket}) => {
+const Login = ({loginUser}) => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
@@ -12,12 +12,9 @@ const Login = ({loginUser, socket}) => {
         loadUsers()
     },[])
 
-
-
     const handleSubmit = (e, user) => {
         e.preventDefault()
         loginUser(user)
-        // connectUserToSocket(user)
     }
 
   return (

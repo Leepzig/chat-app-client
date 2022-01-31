@@ -3,6 +3,10 @@ import io from 'socket.io-client';
 import Messages from './Messages';
 import Login from './Login';
 
+//We're setting current user twice, once in loginUser, and another in connectUserToSocket
+//We set it in login, but with that version that current user doesn't ahve the correct socketID,
+// then we overwrite it with the correct socketID in connectUserToSocket
+//Is that a good idea? Probably not
 
 const Home = () => {
   const EP = `localhost:3001`
@@ -12,7 +16,6 @@ const Home = () => {
   const loginUser = user => {
     setCurrentUser(user)
     initiateSocket()
-    // console.log(socket)
   }
 
   const initiateSocket = () => {
@@ -21,7 +24,6 @@ const Home = () => {
   }
 
   const connectUserToSocket = (user, socketId) => {
-    console.log("socket id:", socket.id)
     const options = {
         method:"PATCH",
         headers:{
@@ -33,13 +35,13 @@ const Home = () => {
     fetch(`http://localhost:3001/users/${user.id}`, options)
     .then(response => response.json())
     .then(data => {
-      // debugger
-      console.log(data[0])
+      //Why is an array being returned? Check to see what the backend is sending.
+      //check the patch request
       setCurrentUser(data[0])
     })
-    //socket doesn't exist when this is called
 }
 
+  //another way to implement this?
   if (socket) socket.on('connect user', (socketId) =>{
     connectUserToSocket(currentUser, socketId)
   })
