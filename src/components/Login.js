@@ -23,10 +23,6 @@ const Login = ({loginUser}) => {
         <form onSubmit={handleSubmit}>
             {users.map(user => <button disabled={user.online} key={user.id} onClick={(e) => handleSubmit(e, user)}>{user.username}</button>)}
         </form>
-
-
-      
-      
       </>
   );
 };

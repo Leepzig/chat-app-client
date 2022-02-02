@@ -63,7 +63,7 @@ const Home = () => {
   return (
     <>
     <h1>Chat World</h1>
-    <Login loginUser={loginUser} socket={socket}/>
+    <Login loginUser={loginUser} />
     </>
   )
 }
