@@ -29,31 +29,31 @@ const Home = () => {
     setSocket(newSocket)
   }
 
-  const connectUserToSocket = (user, socketId) => {
-    const options = {
-        method:"PATCH",
-        headers:{
-            "Accept":"application/json",
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({...user, socketId:socketId})
-    }
-    fetch(`http://localhost:3001/users/${user.id}`, options)
-    .then(response => response.json())
-    .then(data => {
-      setCurrentUser(data)
-    })
-}
+//   const connectUserToSocket = (user, socketId) => {
+//     const options = {
+//         method:"PATCH",
+//         headers:{
+//             "Accept":"application/json",
+//             "Content-Type":"application/json"
+//         },
+//         body:JSON.stringify({...user, socketId:socketId})
+//     }
+//     fetch(`http://localhost:3001/users/${user.id}`, options)
+//     .then(response => response.json())
+//     .then(data => {
+//       setCurrentUser(data)
+//     })
+// }
 
   //another way to implement this?
-  if (socket) socket.on('connect user', (socketId) =>{
-    connectUserToSocket(currentUser, socketId)
-  })
+  // if (socket) socket.on('connect user', (socketId) =>{
+  //   connectUserToSocket(currentUser, socketId)
+  // })
 
   if (currentUser) return (
     <>
     <h1>Chat World</h1>
-    <h2>Hello {currentUser.username},</h2>
+    <h2>Hello {currentUser},</h2>
     <h2>Welcome back!</h2>
     <Messages socket={socket} currentUser={currentUser}/>
     <button onClick={logOff}>Log Off</button>
