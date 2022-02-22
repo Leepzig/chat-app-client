@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Box, Button, TextField } from '@mui/material';
 
 const Login = ({loginUser}) => {
     const [users, setUsers] = useState([])
@@ -23,6 +24,10 @@ const Login = ({loginUser}) => {
         <form onSubmit={handleSubmit}>
             {users.map(user => <button disabled={user.online} key={user.id} onClick={(e) => handleSubmit(e, user)}>{user.username}</button>)}
         </form>
+        <Box component="form" >
+            <TextField  />
+            <Button />
+        </Box>
       </>
   );
 };
