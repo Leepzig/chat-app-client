@@ -23,7 +23,8 @@ const ChatInput = ({ socket, addMessage, currentUser }) => {
   const handleSubmit = e => {
     e.preventDefault()
     if (msgForm) {
-      const msgObject = {user:currentUser.username, content: msgForm, time: getTimeStamp()}
+      const msgObject = {user:currentUser, content: msgForm, time: getTimeStamp()}
+      // const msgObject = {user:currentUser.username, content: msgForm, time: getTimeStamp()}
       socket.emit('send message', msgObject)
       setMsgForm("")
       sendMessageToDB(msgObject)
