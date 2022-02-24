@@ -8,7 +8,12 @@ const ChatInput = ({ socket, addMessage, currentUser }) => {
     const hours = date.getHours().toString()
     const minutes = date.getMinutes().toString()
     const seconds = date.getSeconds().toString()
-    return `${hours}:${minutes}:${seconds}` 
+    return `${hours}:${addZeroToTime(minutes)}:${addZeroToTime(seconds)}` 
+  }
+
+  //formats the minutes and seconds to appear with a zero if less than 10
+  const addZeroToTime = num => {
+    return num < 10 ? `0${num}` : num
   }
 
   const handleChange = e => {
