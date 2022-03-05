@@ -1,5 +1,7 @@
 import React, {useState } from 'react';
 
+import { Box, Button, TextField } from '@mui/material';
+
 const ChatInput = ({ socket, addMessage, currentUser }) => {
   const [msgForm, setMsgForm] = useState("")
 
@@ -44,12 +46,19 @@ const ChatInput = ({ socket, addMessage, currentUser }) => {
   }
    
   return (
-  <div>
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="message" value={msgForm } onChange={handleChange}/>
-            <button>Send Message</button>
-      </form>
-  </div>
+    <>
+  <Box component="form" onSubmit={handleSubmit}>
+    <TextField 
+      type="text" 
+      name="message" 
+      value={msgForm } 
+      onChange={handleChange}
+    />
+    <Button variant="contained">
+      Send Message
+    </Button >
+  </Box>
+    </>
   )
 };
 
