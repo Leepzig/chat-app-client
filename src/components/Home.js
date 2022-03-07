@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import io from 'socket.io-client';
 import Messages from './Messages';
 import Login from './Login';
+import { Button } from '@mui/material';
 
 
 const Home = () => {
@@ -31,7 +32,7 @@ const Home = () => {
     <h2>Hello {currentUser},</h2>
     <h2>Welcome back!</h2>
     <Messages socket={socket} currentUser={currentUser}/>
-    <button onClick={logOff}>Log Off</button>
+    <Button variant="contained" onClick={logOff}>Log Off</Button>
     </>
   );
 
