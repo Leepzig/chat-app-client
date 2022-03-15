@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import ChatInput from './ChatInput';
+import MessageLine from './MessageLine';
 
 import { Container, Box, Typography } from '@mui/material';
 
@@ -33,8 +34,8 @@ const Messages = ({ socket, currentUser }) => {
   return (
       <>
         <Container>
-            <Box id="chatbox" sx={{ height:"300px", my: 2, overflow:"auto", border:"solid" }} ref={chatBox}>
-                {messages.map(msg => <Typography variant="body1" key={msg.content}>{`${msg.user} ${msg.time} ${msg.content}`}</Typography>)}
+            <Box id="chatbox" sx={{ height:"300px", width: "800px", my: 2, overflow:"auto", border:"solid", backgroundColor:"grey" }} ref={chatBox}>
+                {messages.map(msg => <MessageLine key={msg._id} msg={msg} currentUser={currentUser}/>)}
             </Box>
         <ChatInput socket={socket} addMessage={addMessage} currentUser={currentUser}/>
       </Container>

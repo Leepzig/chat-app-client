@@ -49,6 +49,7 @@ const ChatInput = ({ socket, addMessage, currentUser }) => {
     <>
   <Box component="form" onSubmit={handleSubmit}>
     <TextField 
+      sx={{width:"400px"}}
       type="text" 
       name="message" 
       value={msgForm } 
