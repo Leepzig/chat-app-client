@@ -1,14 +1,19 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import io from 'socket.io-client';
 import Messages from './Messages';
 import Login from './Login';
 import { Button } from '@mui/material';
+import LoginButton from './Auth/LoginButton';
+import LogoutButton from './Auth/LogoutButton';
+import { useAuth0 } from '@auth0/auth0-react'
 
 
 const Home = () => {
   const EP = `localhost:3001`
   const [currentUser, setCurrentUser] = useState(null)
   const [socket, setSocket] = useState(null)
+  const { isAuthenticated } = useAuth0()
+  const auth = useAuth0()
 
   const loginUser = user => {
     setCurrentUser(user)
@@ -39,7 +44,8 @@ const Home = () => {
   return (
     <>
     <h1>Chat World</h1>
-    <Login loginUser={loginUser} />
+    {/* <Login loginUser={loginUser} /> */}
+    {isAuthenticated ? <LogoutButton /> :<LoginButton />}
     </>
   )
 }

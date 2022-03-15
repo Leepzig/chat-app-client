@@ -7,11 +7,10 @@ const LogoutButton = () => {
 
     const handleLogout = e => {
         logout()
-        console.log('logout clicked')
     }
 
   return (
-    <Button onClick={handleLogout}>Logout</Button>
+    <Button variant="contained" onClick={handleLogout}>Logout</Button>
   )
 }
 
