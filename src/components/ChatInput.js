@@ -1,5 +1,7 @@
 import React, {useState } from 'react';
 
+import { Box, Button, TextField } from '@mui/material';
+
 const ChatInput = ({ socket, addMessage, currentUser }) => {
   const [msgForm, setMsgForm] = useState("")
 
@@ -24,7 +26,6 @@ const ChatInput = ({ socket, addMessage, currentUser }) => {
     e.preventDefault()
     if (msgForm) {
       const msgObject = {user:currentUser, content: msgForm, time: getTimeStamp()}
-      // const msgObject = {user:currentUser.username, content: msgForm, time: getTimeStamp()}
       socket.emit('send message', msgObject)
       setMsgForm("")
       sendMessageToDB(msgObject)
@@ -45,12 +46,20 @@ const ChatInput = ({ socket, addMessage, currentUser }) => {
   }
    
   return (
-  <div>
-        <form onSubmit={handleSubmit}>
-            <input type="text" name="message" value={msgForm } onChange={handleChange}/>
-            <button>Send Message</button>
-      </form>
-  </div>
+    <>
+  <Box component="form" onSubmit={handleSubmit}>
+    <TextField 
+      sx={{width:"400px"}}
+      type="text" 
+      name="message" 
+      value={msgForm } 
+      onChange={handleChange}
+    />
+    <Button variant="contained">
+      Send Message
+    </Button >
+  </Box>
+    </>
   )
 };
 

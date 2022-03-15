@@ -1,8 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import ChatInput from './ChatInput';
+import MessageLine from './MessageLine';
+
+import { Container, Box, Typography } from '@mui/material';
 
 const Messages = ({ socket, currentUser }) => {
     const [messages, setMessages] = useState([])
+    const chatBox = useRef()
     
     const addMessage = msg => {
         setMessages([...messages, msg])
@@ -23,11 +27,19 @@ const Messages = ({ socket, currentUser }) => {
         loadMessages()
     },[])
 
+    useEffect(() => {
+        chatBox.current.scrollTop = chatBox.current.scrollHeight
+    }, [messages])
+
   return (
-  <div>
-      {messages.map(msg => <p key={msg.content}>{`${msg.user} ${msg.time} ${msg.content}`}</p>)}
-      <ChatInput socket={socket} addMessage={addMessage} currentUser={currentUser}/>
-  </div>
+      <>
+        <Container>
+            <Box id="chatbox" sx={{ height:"300px", width: "800px", my: 2, overflow:"auto", border:"solid", backgroundColor:"grey" }} ref={chatBox}>
+                {messages.map(msg => <MessageLine key={msg._id} msg={msg} currentUser={currentUser}/>)}
+            </Box>
+        <ChatInput socket={socket} addMessage={addMessage} currentUser={currentUser}/>
+      </Container>
+      </>
   );
 };
 
