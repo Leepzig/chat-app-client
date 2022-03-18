@@ -11,7 +11,7 @@ const LoginButton = () => {
 
   return (
       <>
-        <h3>Login with your account:</h3>
+        {/* <h3>Login with your account:</h3> */}
             <Button onClick={handleLogin} variant="contained">Login</Button>
 
       </>
