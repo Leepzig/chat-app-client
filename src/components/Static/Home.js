@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import io from 'socket.io-client';
-import Messages from './Messages';
+import Messages from '../Chat/Messages';
 import { Button } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react'
 
